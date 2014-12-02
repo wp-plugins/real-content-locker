@@ -22,7 +22,7 @@ Share your viral Content and get traffic to your website.
 <strong>Real Content Locker</strong> Share your viral content post and get traffic to your website.<br />
 It is a plugin that allows you to view content from your page/post wordpress, the content is blocked until the visitor share in one of the social networks the content, once you share content will unlock to view. 
 With this we can bring a lot of traffic to our website and the content would become viral. 
-<br />
+<br /><br />
 When selecting the content that you block can put a different description for each Post, if you leave it blank will leave the message with default options for the plugin.
 
 <strong>RTL ready!</strong>
