@@ -1,0 +1,24 @@
+.ilenplugin-options .row .input-group input[type=text]{
+  height: 28px
+}
+.ilenplugin-options .row .input-group .input-group-addon{
+  padding: 5px 12px;
+}
+
+.area-admin-picker{
+  margin-top: 5px!important;
+}
+
+.ilenvideolock_stats_table{}
+.ilenvideolock_stats_table td,
+.ilenvideolock_stats_table th{
+  text-align: center;
+}
+.ilenvideolock_stats_table td.string,
+.ilenvideolock_stats_table th.string{
+  text-align: left;
+}
+
+.realcontentlocker-icon{
+  background: url('../images/icon_content_locker.png') 2px 2px no-repeat!important;
+}

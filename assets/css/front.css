@@ -1,0 +1,299 @@
+.realcontentlocker{
+  padding-bottom: 10px;
+  border:1px solid red;
+  background: #dedede;
+
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+}
+.realcontentlocker__content{
+  display: none;
+}
+.realcontentlocker__unlock .facebook-realcontentlocker{
+    display: inline;
+    margin-left: 0px;
+}
+.realcontentlocker__unlock .twitter-realcontentlocker{
+  display: inline;
+}
+.realcontentlocker__unlock .google-plus-realcontentlocker{
+  display: inline;
+}
+.realcontentlocker__unlock_button_social{
+  text-align: center;
+}
+.realcontentlocker__unlock_text{
+  text-align: center;
+}
+
+/* STYLES */
+.realcontentlocker.style1{
+  margin: 1em auto;
+  width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 1em 2em;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.25);
+}
+
+
+.realcontentlocker.style2{
+  margin: 1em auto;
+  width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 1em 2em;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.25);
+  background: #fff;
+}
+
+
+.realcontentlocker.style3{
+  width: 100%;
+  background: #fff;
+  padding: 0; 
+} 
+.realcontentlocker.style3 .realcontentlocker__unlock_text{
+  background: #f9f9f9;
+  padding: 20px 40px;
+  border-top: 4px solid #ccc;
+  color: #999;
+  text-transform: uppercase;
+  padding-left: 90px;
+  border-bottom: 1px solid #eee;
+}
+.style3.realcontentlocker{
+  position: relative;
+  box-shadow: 0px 2px 2px rgba(0,0,0,.15);
+  margin: 10px 0;
+}
+.style3.realcontentlocker:before{
+  content: '';
+  background: url(../images/lock1.png) no-repeat;
+  opacity: .4;
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+
+.realcontentlocker.style4{
+  width: 100%;
+  padding: 0; 
+} 
+.realcontentlocker.style4 .realcontentlocker__unlock_text{
+  background: #FDFFF1;
+  padding: 20px 40px;
+  border-top: 4px solid #ccc;
+  color: #999;
+  text-transform: uppercase;
+  padding-left: 90px;
+  border-bottom: 1px solid #eee;
+}
+.style4.realcontentlocker{
+  position: relative;
+  box-shadow: 0px 2px 2px rgba(0,0,0,.15);
+  margin: 10px 0;
+}
+.style4.realcontentlocker:before{
+  content: '';
+  background: url(../images/lock1.png) no-repeat;
+  opacity: .4;
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+.realcontentlocker.style4 .realcontentlocker__unlock_button_social{
+  text-align: center;
+  background: rgb(252, 255, 205);  
+}
+
+
+.realcontentlocker.style5{
+  width: 100%;
+  padding: 0; 
+} 
+.realcontentlocker.style5 .realcontentlocker__unlock_button_social{
+  text-align: center;
+  background: rgb(250, 250, 250); 
+}
+.realcontentlocker.style5 .realcontentlocker__unlock_text {
+  background: #FFFFFF;
+  padding: 20px 40px;
+  border-top: 4px solid #666666;
+  color: #4A4A4A;
+  text-transform: uppercase;
+  padding-left: 90px;
+  border-bottom: 1px solid #eee;
+}
+.style5.realcontentlocker{
+  position: relative;
+  box-shadow: 0px 2px 2px rgba(0,0,0,.15);
+  margin: 10px 0;
+}
+.style5.realcontentlocker:before{
+  content: '';
+  background: url(../images/lock1.png) no-repeat;
+  opacity: .7;
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+
+
+.realcontentlocker.style6 {
+  width: 90%;
+  height: auto;
+  margin: 40px 5%;
+  border:0;
+  position: relative;
+  background-color: white;
+  padding: 10px;
+  -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 0 1px 1px rgba(0, 0, 0, 0.2), 0 3px 0 #fff, 0 4px 0 rgba(0, 0, 0, 0.2), 0 6px 0 #fff, 0 7px 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 0 1px 1px rgba(0, 0, 0, 0.2), 0 3px 0 #fff, 0 4px 0 rgba(0, 0, 0, 0.2), 0 6px 0 #fff, 0 7px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 0 1px 1px rgba(0, 0, 0, 0.2), 0 3px 0 #fff, 0 4px 0 rgba(0, 0, 0, 0.2), 0 6px 0 #fff, 0 7px 0 rgba(0, 0, 0, 0.2);
+}
+.realcontentlocker.style6 .realcontentlocker__unlock_text{
+  font-family: 'Handlee', cursive;
+  text-align: center;
+  font-size: 24px;
+  color: #34495E;
+}
+ 
+
+.realcontentlocker.style7 {
+  border: 0;
+  box-shadow: none;
+  background: #E9EAED;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 0;
+  padding: 3px;
+  background: rgb(0, 148, 255);
+}
+.realcontentlocker.style7 .realcontentlocker__unlock{
+  background: #fff;
+}
+
+.realcontentlocker.style8 {
+  border: 0;
+  box-shadow: none;
+  background: #E9EAED;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 0;
+  background: rgb(76, 143, 245);
+  padding: 10px 0 0;
+  position: relative;
+}
+.realcontentlocker.style8 .realcontentlocker__unlock{
+  background: rgb(255, 254, 179);
+}
+.realcontentlocker.style8 .realcontentlocker__unlock_text {
+  text-align: center;
+  margin: 20px;
+  padding-top: 20px;
+}
+.realcontentlocker.style8:before {
+  content: '';
+  background: url(../images/unlock-white.png) no-repeat;
+  opacity: .7;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 3px;
+  left: 50%;
+}
+
+
+
+.realcontentlocker.style9 {
+  border: 0;
+  box-shadow: none;
+  background: #E9EAED;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 0;
+  background: rgb(31, 31, 31);
+  padding: 10px 0 0;
+  position: relative;
+}
+.realcontentlocker.style9 .realcontentlocker__unlock{
+  background: rgb(244, 244, 244);
+  border-bottom: 2px solid gray;
+}
+.realcontentlocker.style9 .realcontentlocker__unlock_text {
+  text-align: center;
+  margin: 20px;
+  padding-top: 20px;
+}
+.realcontentlocker.style9:before {
+  content: '';
+  background: url(../images/unlock-white.png) no-repeat;
+  opacity: .7;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 3px;
+  left: 50%;
+}
+
+
+
+
+.realcontentlocker.style10{
+  width: 100%;
+  padding: 0; 
+} 
+.realcontentlocker.style10 .realcontentlocker__unlock_text{
+  background: #FFFFFF;
+  padding: 20px 40px;
+  border-top: 4px solid #AEAEAE;
+  color: #000;
+  text-transform: uppercase;
+  padding-left: 90px;
+  border-bottom: 1px solid #eee;
+}
+.style10.realcontentlocker{
+  position: relative;
+  box-shadow: 0px 2px 2px rgba(0,0,0,.15);
+  margin:10px 0 20px;
+}
+.style10.realcontentlocker:before{
+  content: '';
+  background: url(../images/smiley10.png) no-repeat;
+  opacity: .4;
+  width: 128px;
+  height: 128px;
+  position: absolute;
+  top: -16px;
+  left: -12px;
+}
+.realcontentlocker.style10 .realcontentlocker__unlock_button_social{
+  text-align: center;
+  background: rgb(252, 255, 205);  
+}
+
+
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+ 
+}

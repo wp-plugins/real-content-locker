@@ -1,0 +1,12 @@
+Cosas que cambiar:
+  ☐ Cuando pasas de Free a PRO debes cambiarle el nombre de opciones
+    Aun los datos se reseten es necesario ya que al de free a pro como 
+    la varible de datos es la misma, en los otros datos del pro no sale
+    y esto causa que no haya ni default para ellos y provoca algunos problemas
+    esto paso cuando te compraron el plugin de video.
+  ✔ Base de datos @done (14-11-29 00:02)
+    Cuando eliminar la tabla de un plugin que ya fue previamente instalado
+    en tu proceso ay una validacion de comprobar bases de dato, al momento de instar
+    otra vez el plugin no instala de nuevo la tabla porque esa validacion no lo deja
+    de alguna manera ay preguntar si existe la tabla tambien, esta valicion es la
+    que faltaría.
