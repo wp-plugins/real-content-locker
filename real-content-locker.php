@@ -3,7 +3,7 @@
 Plugin Name: Real Content Locker
 Plugin URI:
 Description: Share your viral <strong>Content</strong> and get traffic to your website.
-Version: 1.0
+Version: 1.1
 Author: iLen
 Author URI:
 */
@@ -11,8 +11,8 @@ Author URI:
 
 if ( !class_exists('real_content_lock') ) {
 
-require_once 'assets/ilenframework/assets/lib/utils.php';
-require_once 'assets/functions/options.php';
+require_once 'assets/ilenframework/assets/lib/utils.php'; // get utils
+require_once 'assets/functions/options.php'; // get options plugins
 require_once "assets/ilenframework/assets/lib/Mobile_Detect.php";
 
 class real_content_lock extends real_content_lock_make{
@@ -20,6 +20,7 @@ class real_content_lock extends real_content_lock_make{
     var $mobil_detect = null;
     function __construct(){
 
+        global $if_utils;
         // ajax nonce for stats
         add_action( 'wp_ajax_nopriv_ajax-content', array( &$this, 'my_shared_content' ) );
         add_action( 'wp_ajax_ajax-content', array( &$this, 'my_shared_content' ) );
@@ -55,7 +56,7 @@ class real_content_lock extends real_content_lock_make{
             add_shortcode('realcontentlocker', array( &$this,'show_RealContentLocker') );
 
             // get option plugin
-            $options_content_locker = IF_get_option( $this->parameter['name_option'] );
+            $options_content_locker = $if_utils->IF_get_option( $this->parameter['name_option'] );
 
             // add filter on hook wp_head
             if( (isset($options_content_locker->button_fb) && $options_content_locker->button_fb) || isset($options_content_locker->button_fb_mobil) && $options_content_locker->button_fb_mobil ){
@@ -279,6 +280,9 @@ class real_content_lock extends real_content_lock_make{
 
     // Add meta og:image to the header!
     function add_fb_meta_image() {
+
+        global $if_utils;
+
         if(  is_singular() ){
 
             // @see http://codex.wordpress.org/Function_Reference/get_shortcode_regex
@@ -292,7 +296,7 @@ class real_content_lock extends real_content_lock_make{
                 if( isset($matches[5][0]) )
                     $url_youtube = $matches[5][0];
 
-                    $image_share =   IF_get_image( "medium" );
+                    $image_share =   $if_utils->IF_get_image( "medium" );
                     $image_share = $image_share["src"];
                     echo '<meta property="og:image" content="'.$image_share.'"/>';    
             }

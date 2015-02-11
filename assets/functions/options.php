@@ -36,7 +36,7 @@ class real_content_lock_make{
                      'name_option'    =>'real_content_locker',
                      'name_plugin_url'=>'real-content-locker',
                      'descripcion'    =>'Share your viral content and get traffic to your website.',
-                     'version'        =>'1.0',
+                     'version'        =>'1.1',
                      'db_version'     =>'1.0',
                      'url'            =>'', 
                      'logo'           =>'<i class="fa fa-file-excel-o" style="padding:11px 13px 12px 15px;color: rgb(150, 150, 150);"></i>',
@@ -50,7 +50,8 @@ class real_content_lock_make{
                      'wp_review'      => '',
                      'type'           =>'plugin-tabs',
                      'method'         =>'free',
-                     'themeadmin'     =>'fresh');
+                     'themeadmin'     =>'fresh',
+                     'scripts_admin'  =>array( 'page'        => array('real-content-locker' => array('jquery_ui_reset')), ));
     }
 
 
@@ -80,6 +81,17 @@ class real_content_lock_make{
                                                                         'name'  =>$this->parameter['name_option']. '_' . 'title',
                                                                         'class' =>'',
                                                                         'row'   =>array('a','b')),
+
+                                                                array(  'title' =>__('Facebook share button (WEB)',$this->parameter['name_option']),
+                                                                        'help'  =>__('Activates the facebook share button.',$this->parameter['name_option']),
+                                                                        'type'  =>'checkbox',
+                                                                        'value' =>'1',
+                                                                        'value_check'=>1,
+                                                                        'id'    =>$this->parameter['name_option']. '_' . 'button_fb',
+                                                                        'name'  =>$this->parameter['name_option']. '_' . 'button_fb',
+                                                                        'class' =>'',  
+                                                                        'row'   =>array('a','b')),
+                                                                
 
                                                                 array(  'title' =>__('Style',$this->parameter['name_option']),
                                                                             'help'  =>__('Select the style you want for your locked content',$this->parameter['name_option']),
