@@ -51,7 +51,7 @@ class real_content_lock_make{
                      'type'           =>'plugin-tabs',
                      'method'         =>'free',
                      'themeadmin'     =>'fresh',
-                     'scripts_admin'  =>array( 'page'        => array('real-content-locker' => array('jquery_ui_reset')), ));
+                     'scripts_admin'  =>array( 'page' => array('real-content-locker' => array('jquery_ui_reset')), ));
     }
 
 
