@@ -40,6 +40,8 @@ When selecting the content that you block can put a different description for ea
 
 
 == Changelog ==
+= 1.2 =
+* Core update iLenFramework 2.0, minus fixed
 = 1.1 =
 * Now if it works!
 * Core update iLenFramework 2.0
