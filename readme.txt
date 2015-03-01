@@ -18,6 +18,9 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Share your viral Content and get traffic to your website.
 
 == Description ==
+<blockquote>
+  <p>Support for this plugin will only be served <a href="http://support.ilentheme.com" target="_blank">HERE</a></p>
+</blockquote>
 <h3>Get 300% traffic to your website through your content.!!</h3>
 <strong>Real Content Locker</strong> Share your viral content post and get traffic to your website.<br />
 It is a plugin that allows you to view content from your page/post wordpress, the content is blocked until the visitor share in one of the social networks the content, once you share content will unlock to view. 
