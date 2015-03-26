@@ -3,7 +3,7 @@
 Plugin Name: Real Content Locker
 Plugin URI:
 Description: Share your viral <strong>Content</strong> and get traffic to your website.
-Version: 1.4.1
+Version: 1.4.2
 Author: iLen
 Author URI:
 */
@@ -134,7 +134,7 @@ class real_content_lock extends real_content_lock_make{
         global $options_content_locker;
 
         if( (isset($options_content_locker->button_fb) && $options_content_locker->button_fb) || isset($options_content_locker->button_fb_mobil) && $options_content_locker->button_fb_mobil ){
-            wp_enqueue_script('facebook-js', 'http://connect.facebook.net/en_US/all.js#xfbml=1', array('jquery'),$this->parameter['version'],FALSE);
+            wp_enqueue_script('facebook-js', 'http://connect.facebook.net/en_US/sdk.js#xfbml=1', array('jquery'),$this->parameter['version'],FALSE);
         }
 
 
@@ -231,7 +231,7 @@ class real_content_lock extends real_content_lock_make{
                     FB.init({
                       appId      : AjaxContent.facebook_api,
                       xfbml      : true,
-                      version    : 'v2.2'
+                      version    : 'v2.3'
                     });
                 //};
             }
