@@ -43,6 +43,8 @@ When selecting the content that you block can put a different description for ea
 
 
 == Changelog ==
+= 1.6 =
+* Update facebook api 2.3 (bug 2)
 = 1.5 =
 * Update facebook api 2.3 (bug)
 = 1.4.2 =
