@@ -36,7 +36,7 @@ class real_content_lock_make{
                      'name_option'    =>'real_content_locker',
                      'name_plugin_url'=>'real-content-locker',
                      'descripcion'    =>'Share your viral content and get traffic to your website.',
-                     'version'        =>'1.5',
+                     'version'        =>'1.6',
                      'db_version'     =>'1.0',
                      'url'            =>'', 
                      'logo'           =>'<i class="fa fa-file-excel-o" style="padding:11px 13px 12px 15px;color: rgb(150, 150, 150);"></i>',

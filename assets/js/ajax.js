@@ -88,7 +88,7 @@ function unlocker_fb( post_id, url_path, id_hash, app_id ){
     FB.ui({ 
         //method: isMobile() ? 'feed' : '../sharer/sharer.php?u=' +encodeURIComponent(document.URL)+ '&t=&pass=',
         //method: isMobile() ? 'share' : '../sharer/sharer.php?u=' +encodeURIComponent(document.URL)+ '&t=&pass=app_id=261667905712',
-        method: isMobile()? 'feed': '../sharer/sharer.php?u=' +encodeURIComponent(document.URL)+ '&t=&pass='+string_app_id,
+        method: isMobile()? 'feed': '../../sharer/sharer.php?u=' +encodeURIComponent(document.URL)+ '&t=&pass='+string_app_id,
         link : document.URL/*,
         image : $('.ilenvideolock_img_'+id_hash).attr('src')*/
     }, function (response) {

@@ -8,8 +8,8 @@ Author URI: http://es.ilentheme.com
 Author: iLen
 Requires at least: 3.9
 Tested up to: 4.1
-Stable tag: 1.4
-Version: 1.5
+Stable tag: 1.6
+Version: 1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LJ8X9UKM3Q7AU
