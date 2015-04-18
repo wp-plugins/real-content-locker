@@ -8,8 +8,8 @@ Author URI: http://es.ilentheme.com
 Author: iLen
 Requires at least: 3.9
 Tested up to: 4.1
-Stable tag: 1.6
-Version: 1.6
+Stable tag: 1.7
+Version: 1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LJ8X9UKM3Q7AU
@@ -43,6 +43,8 @@ When selecting the content that you block can put a different description for ea
 
 
 == Changelog ==
+= 1.7 =
+* Update facebook api 2.4
 = 1.6 =
 * Update facebook api 2.3 (bug 2)
 = 1.5 =
