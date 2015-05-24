@@ -3,7 +3,7 @@
 Plugin Name: Real Content Locker
 Plugin URI:
 Description: Share your viral <strong>Content</strong> and get traffic to your website.
-Version: 1.8
+Version: 1.9
 Author: iLen
 Author URI:
 */
@@ -269,7 +269,11 @@ class real_content_lock extends real_content_lock_make{
                         
             $_html .= "</div>";
             $_html .= "</div>";
-            $_html .= "<div class='realcontentlocker__content'>$content</div>";
+            $_html .= "<div class='realcontentlocker__content'>$content</div>
+            <input type='hidden' id='real_content_locker_post_id' value='$post->ID' />
+            <input type='hidden' id='real_content_locker_hash' value='$content_id_hash' />
+            <input type='hidden' id='real_content_locker_days_cache' value='$options_content_locker->day_cache' />
+            ";
         $_html .= "</div>";
  
         return $_html;

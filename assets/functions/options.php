@@ -36,7 +36,7 @@ class real_content_lock_make{
                      'name_option'    =>'real_content_locker',
                      'name_plugin_url'=>'real-content-locker',
                      'descripcion'    =>'Share your viral content and get traffic to your website.',
-                     'version'        =>'1.8',
+                     'version'        =>'1.9',
                      'db_version'     =>'1.0',
                      'url'            =>'', 
                      'logo'           =>'<i class="fa fa-file-excel-o" style="padding:11px 13px 12px 15px;color: rgb(150, 150, 150);"></i>',
@@ -114,6 +114,16 @@ class real_content_lock_make{
                                                                             'name'  =>$this->parameter['name_option']. '_' . 'style',
                                                                             'class' =>'',
                                                                             'row'   =>array('a','b')),
+                                                                
+
+                                                                array(  'title' =>__('Days cache',$this->parameter['name_option']),
+                                                                        'help'  =>__("Enter the number of days you want the contents are no longer locked eleven o'clock it has-been shared.",$this->parameter['name_option']),
+                                                                        'type'  =>'text',
+                                                                        'value' =>'0',
+                                                                        'id'    =>$this->parameter['name_option']. '_' . 'day_cache',
+                                                                        'name'  =>$this->parameter['name_option']. '_' . 'day_cache',
+                                                                        'class' =>'',
+                                                                        'row'   =>array('a','b')),
 
 
                                                             ),

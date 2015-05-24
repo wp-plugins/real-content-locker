@@ -5,8 +5,44 @@ function jsTweet() {
 
 }
 
+function createCookie(name, value, days) {
+  
+    if (days) {
+     
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        var expires = "; expires=" + date.toGMTString();
+    } else var expires = "";
+    
+    var ok = name + "=" + value + expires + "; path=/";
+    document.cookie = name + "=" + value + expires + "; path=/";
+    
+}
+
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
 
 jQuery(document).ready(function($){
+
+
+    var real_unlocker = readCookie( "real_content_locker_post_id_"+$("#real_content_locker_post_id").val() );
+    var real_unlocker_hast = $("#real_content_locker_hash").val();
+
+    if( real_unlocker ){
+        $('.realcontentlocker_id_'+real_unlocker_hast).find(".realcontentlocker__unlock").remove();
+        $('.realcontentlocker_id_'+real_unlocker_hast).find(".realcontentlocker__content").css("display","block");
+        $('.realcontentlocker_id_'+real_unlocker_hast).removeClass("realcontentlocker");
+
+        return;
+    }
 
     //from the href="#"
     jQuery('.facebook-realcontentlocker a').on('click',function(event){
@@ -133,7 +169,11 @@ function ilenvideolock_linkedin( post_id, url_path, id_hash ) {
 function ajax_shared_complete_content( post_id, url_path, id_hash, social ){
 
     var $ = jQuery;
- 
+    var days = parseInt( $("#real_content_locker_days_cache").val() );
+    if( days != 0 ){
+        createCookie('real_content_locker_post_id_'+post_id, 'true', $("#real_content_locker_days_cache").val() );
+    }
+
     $('.realcontentlocker_id_'+id_hash).find(".realcontentlocker__unlock").remove();
     $('.realcontentlocker_id_'+id_hash).find(".realcontentlocker__content").css("display","block");
     $('.realcontentlocker_id_'+id_hash).removeClass("realcontentlocker");

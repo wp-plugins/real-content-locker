@@ -1,15 +1,15 @@
 <?php 
 /**
- * iLenFramework 2.5
+ * iLenFramework 2.5.3
  * @package ilentheme
  * 
  * live as if it were the last day of your life
  */
 
 // REQUIRED FILES TO RUN
-if ( !class_exists('ilen_framework_2_5') ) {
+if ( !class_exists('ilen_framework_2_5_3') ) {
 
-class ilen_framework_2_5 {
+class ilen_framework_2_5_3 {
 
 		var $options          = array();
 		var $parameter        = array();
@@ -181,8 +181,9 @@ class ilen_framework_2_5 {
 				if(  $key2 != 'last_update' ){
 					foreach ($value2['options'] as $key => $value) {
 
-						if( isset($value['name']) )
+						if( isset($value['name']) && $value['type'] != "html" ){
 							$defaults[$value['name']] = $value['value'];
+						}
 
 					}
 				}
@@ -744,7 +745,7 @@ function ilentheme_options_wrap_for_plugin_tabs(){  ?>
 					
 					if( isset( $value['title'] ) ) { echo "<h2 class='iaccordion-header ".(( $i == 0)?"active":"")."'>{$value['title']}</h2>"; } ?>
 					<div class="iaccordion-content" style="display:<?php if( $i != 0): ?>none<?php else: ?>block<?php endif; ?>">
-					<?php self::build_fields_w( $value['options'], $config['ref']  ); ?>
+					<?php self::build_fields_w( $value['options'], $config['ref'], $widget_unique_id_generate  ); ?>
 					</div>
 				<?php $i++; 
 
@@ -972,6 +973,37 @@ jQuery(".iaccordion-header").on("click",function(){
 			  $( '#widgets-right .widget:has(.ilen_tags)' ).each( function () {
 				initTag( $( this ) );
 			  });
+			} );
+
+		<?php } ?>
+
+
+
+		<?php
+		if(  in_array( 'check_list', $data )  ){ ?>
+
+			function initCheckList( widget ) {
+				//alert( widget.find( '.ilen_check_list' ).children().children("input").length );
+				var num_rand_list = Math.floor((Math.random() * 10) + 1);
+				var new_genery_id_check_list = null;
+				$( widget.find( '.ilen_check_list' ).children() ).each( function () {
+					new_genery_id_check_list = $(this).children("input").attr("id")+"_generic_"+num_rand_list;
+					$(this).children("input").attr("id", new_genery_id_check_list );
+					$(this).children("label").attr("for", new_genery_id_check_list );
+				} );
+				
+			}
+
+			function onFormUpdate_tag( event, widget ) {
+				initCheckList( widget );
+			}
+
+			$( document ).on( 'widget-added widget-updated', onFormUpdate_tag );
+
+			$( document ).ready( function() {
+				$( '#widgets-right .widget:has(.ilen_tags)' ).each( function () {
+					initCheckList( $( this ) );
+				});
 			} );
 
 		<?php } ?>
@@ -1876,20 +1908,20 @@ jQuery(".iaccordion-header").on("click",function(){
 										<textarea id="code_<?php echo $value['id'] ?>" name="<?php echo $value['name'] ?>"><?php echo isset($options_theme[ $value['name'] ])?$options_theme[ $value['name'] ]:$value['value']; ?></textarea>
 									</div>
 									<script>
+										var editor_<?php echo $value['id'] ?>;
+										jQuery(document).ready(function(){
+												editor_<?php echo $value['id'] ?> = CodeMirror.fromTextArea(document.getElementById("code_<?php echo $value['id'] ?>"), {
+												lineNumbers: <?php if( isset($value['lineNumbers']) && $value['lineNumbers'] ){ echo $value['lineNumbers']; }else{ echo "true"; } ?>,
+												styleActiveLine: true,
+												matchBrackets: true
+											});
 
-									  jQuery(document).ready(function(){
-										var editor_<?php echo $value['id'] ?> = CodeMirror.fromTextArea(document.getElementById("code_<?php echo $value['id'] ?>"), {
-											lineNumbers: <?php if( isset($value['lineNumbers']) && $value['lineNumbers'] ){ echo $value['lineNumbers']; }else{ echo "true"; } ?>,
-											styleActiveLine: true,
-											matchBrackets: true
-									   });
-										editor_<?php echo $value['id'] ?>.setOption("theme", "xq-light");
+											editor_<?php echo $value['id'] ?>.setOption("theme", "xq-light");
 
-										<?php if( isset($value['mini_callback'])  && $value['mini_callback'] ): ?>
-											<?php echo $value['mini_callback']; ?>
-										<?php endif; ?>
-									  });
-									  
+											<?php if( isset($value['mini_callback'])  && $value['mini_callback'] ): ?>
+												<?php echo $value['mini_callback']; ?>
+											<?php endif; ?>
+										});
 									</script>
 								</div>
 							</div>
@@ -2230,7 +2262,7 @@ jQuery(".iaccordion-header").on("click",function(){
 
 
 	// =BUILD Fields widget---------------------------------------------
-	function build_fields_w( $fields = array(), $widget_id = '' ){
+	function build_fields_w( $fields = array(), $widget_id = '', $other_ref_widget = 0 ){
 
 			foreach ($fields as $key => $value) {
 
@@ -2372,9 +2404,15 @@ jQuery(".iaccordion-header").on("click",function(){
 						case "checkbox": ?>
 
 							<?php if(isset( $value['before'] )){ echo $value['before'];} ?>
+							<?php 
+								$class_ilen_list = null;
+								if( isset($value['display']) && ($value['display'] == 'list' || $value['display'] == 'types_post') ){
+									$class_ilen_list = "ilen_check_list";
+								}
+							?>
 							<div class="row <?php if(isset( $value['class'] )){ echo $value['class'];} ?> ilentheme_row_checkbox" <?php if(isset( $value['style'] )){ echo $value['style']; } ?>> 
 								<div class="a"><strong><?php echo $value['title']; ?></strong><div class="help"><?php echo $value['help']; ?></div></div>
-								<div class="<?php echo $side_two; ?>">
+								<div class="<?php echo $side_two." ".$class_ilen_list; ?>">
 
 									
 									<?php if( isset($value['display']) && $value['display'] == 'list' ){  ?>
@@ -2395,23 +2433,23 @@ jQuery(".iaccordion-header").on("click",function(){
 										<?php endforeach; ?>
 										
 									<?php } elseif( isset($value['display']) && $value['display'] == 'types_post' ) { ?>
-										<?php $ck=''; if( isset($my_values) ){ $ck =  checked(  $my_values  , 1, FALSE );  }
+										<?php //$ck=''; if( isset($my_values) ){ $ck =  checked(  $my_values  , 1, FALSE );  }
 
 
 											// get type post 
 											$post_types = get_post_types(array(), "objects");
-
+											/*$my_values = null;
 											if( isset($my_values) && !is_array(  $my_values ) ){
 												$my_values = array();
-											}
-
-											foreach ($post_types as $post_type): ?>
+											}*/
+												//var_dump( $value['value'] );
+											foreach ($post_types as $post_type):  ?>
 												<?php if( !in_array($post_type->name,array('revision','nav_menu_item')) ): ?>
 												<div class="row_checkbox_types_post">
 
-													<input  type="checkbox" <?php if( in_array( $post_type->name  , (array)($my_values) ) ){ echo " checked='checked' ";} ?> name="<?php echo $value['id'] ?>[]" id="<?php echo $value['id']."_".$post_type->name ?>" value="<?php echo $post_type->name; ?>"  />   
+													<input  type="checkbox" <?php if( in_array( $post_type->name  , (array)$value['value'] ) ){ echo " checked='checked' ";} ?> name="<?php echo $value['name'] ?>[]" id="<?php echo $value['id']."__".$post_type->name."__{$widget_id}" ?>" value="<?php echo $post_type->name; ?>"  />   
 
-													<label for="<?php echo $value['id']."_".$post_type->name ?>"><span class="ui"></span></label>
+													<label for="<?php echo $value['id']."__".$post_type->name."__{$widget_id}" ?>"><span class="ui"></span></label>
 													&nbsp;<?php echo $post_type->labels->name; ?>
 													<div class="help"><?php //echo $value2['help']; ?></div>
 												</div>
@@ -2840,6 +2878,8 @@ if( $value_stored ){
 				return $input;
 			}elseif( $type == 't' ){ // use strip_tags
 				return (string)esc_attr( strip_tags($input) );
+			}elseif( $type == 'a' ){ // use strip_tags
+				return (array)$input;
 			}
 		}
 
@@ -3637,5 +3677,5 @@ if( isset($IF_CONFIG->components) && ! is_array($IF_CONFIG->components) ){
 
 global $IF;
 $IF = null;
-$IF = new ilen_framework_2_5;
+$IF = new ilen_framework_2_5_3;
 ?>
