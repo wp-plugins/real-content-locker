@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 3.9
 Tested up to: 4.2.1
 Stable tag: 1.8
-Version: 1.9
+Version: 1.9.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LJ8X9UKM3Q7AU
@@ -43,6 +43,8 @@ When selecting the content that you block can put a different description for ea
 
 
 == Changelog ==
+= 1.9.1 =
+* Update core <code>iLenFramework 2.5.4</code>
 = 1.9 =
 * Add new option 'Days cache': Enter the number of days you want the contents are no longer locked eleven o'clock it has-been shared.
 * Update core <code>iLenFramework 2.5.3</code>

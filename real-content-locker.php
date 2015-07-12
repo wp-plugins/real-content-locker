@@ -3,7 +3,7 @@
 Plugin Name: Real Content Locker
 Plugin URI:
 Description: Share your viral <strong>Content</strong> and get traffic to your website.
-Version: 1.9
+Version: 1.9.1
 Author: iLen
 Author URI:
 */
