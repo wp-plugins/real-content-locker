@@ -1,15 +1,15 @@
 <?php 
 /**
- * iLenFramework 2.6.3
+ * iLenFramework 2.6.6
  * @package ilentheme
  * 
  * live as if it were the last day of your life
  */
 
 // REQUIRED FILES TO RUN
-if ( !class_exists('ilen_framework_2_6_4') ) {
+if ( !class_exists('ilen_framework_2_6_6') ) {
 
-class ilen_framework_2_6_4 {
+class ilen_framework_2_6_6 {
 
 		var $options          = array();
 		var $parameter        = array();
@@ -828,6 +828,26 @@ jQuery(".iaccordion-header").on("click",function(){
 	}
 
 
+	// =Interface Create MORE for Widgets ---------------------------------------------
+	function create_ilenWidget_more( $config , $full_options ){ 
+	
+		global $if_utils;
+		$widget_unique_id_generate = rand(1,5559); ?>
+		<div class='ilenwidget-more'>
+			<div class="ilenwidget-more--button">More...</div>
+				<div class="widget_body-more <?php echo $config['new']; ?>"  id="ilenwidget-more_id_<?php echo isset($config['id'])?$config['id'].'_'.$widget_unique_id_generate:'_none'; ?>">
+				<?php echo isset($config['description'])?"<header>".$config['description']."</header>":''; ?>
+					<?php 
+					//var_dump( $full_options['d'] );
+					if( is_array($full_options) ){
+						self::build_fields_w2( $full_options, $config['ref'], $widget_unique_id_generate  );
+					}  ?>
+				</div> 
+		</div>
+		<?php 
+	}
+
+
 	function ilen_print_script_footer_widget( $data, $class_widget_name, $id_widget ){ ?>
  
 	<script>
@@ -1008,6 +1028,18 @@ jQuery(".iaccordion-header").on("click",function(){
 			} );
 
 		<?php } ?>
+
+		// Widget additional field (MORE)
+		$( document ).on( 'widget-added widget-updated', function(){
+			$( ".ilenwidget-more--button" ).each(function() {
+				$( this ).off('click').on('click', function() {
+					$( this ).toggleClass( "active_ilen_widget_more" );
+					$( this ).next().toggleClass( "active_ilen_widget_more" );
+				});
+			});
+		} );
+ 
+
  
 
 
@@ -2588,10 +2620,54 @@ jQuery(".iaccordion-header").on("click",function(){
 	}
 
 
+
+	// =BUILD Fields widget MORE---------------------------------------------
+	function build_fields_w2( $fields = array(), $widget_id = '' ){
+
+		if( is_array($fields) ){
+			foreach ($fields as $key => $value) {
+
+						if( in_array("b", $value['row']) ) { $side_two = "b"; }else{  $side_two ="c"; }
+
+						switch ( $value['type'] ) {
+
+							case "text": ?>
+								<?php if(isset( $value['before'] )){ echo $value['before'];} ?>
+								<div class="row <?php if(isset( $value['class'] )){ echo $value['class'];} ?>" <?php if(isset( $value['style'] )){ echo $value['style'];} ?> >
+									<div class="a"><strong><?php echo $value['title']; ?></strong><div class="help"><?php echo $value['help']; ?></div></div>
+									<div class="<?php echo $side_two; ?>">
+										<input type="text"  value="<?php if( isset( $value['value'] ) ){ echo $value['value']; } ?>" name="<?php echo $value['name'] ?>" id="<?php echo $value['id'] ?>"  autocomplete="off" <?php if(isset($value['placeholder'])){ echo "placeholder='{$value['placeholder']}'"; } ?>  />
+									</div>
+								</div>
+								<?php if(isset( $value['after'] )){ echo $value['after'];} ?>
+
+							<?php break;
+
+							case "color": ?>
+
+							<?php if(isset( $value['before'] )){ echo $value['before'];} ?>
+							<div class="row <?php if(isset( $value['class'] )){ echo $value['class'];} ?>" <?php if(isset( $value['style'] )){ echo $value['style'];} ?>>
+								<div class="a"><strong><?php echo $value['title']; ?></strong><div class="help"><?php echo $value['help']; ?></div></div>
+								<div class="<?php echo $side_two; ?>">
+									<input type="text" class="theme_color_picker" value="<?php if(isset(  $value['value'] )){ echo $value['value']; } ?>" name="<?php echo $value['name']; ?>" id="<?php echo $value['id'] ?>" data-default-color="<?php echo $value['value']; ?>" />
+								</div>
+							</div>
+							<?php if(isset( $value['after'] )){ echo $value['after'];} ?>
+
+						<?php break;
+
+						}
+			}
+		}
+
+	}
+
+
 		// =BUILD Fields meta---------------------------------------------
 	function build_fields_m( $fields = array(), $stored = '' ){
 
 		global $if_utils;
+
 
 		$_html = "";
 		$stored = $stored[0];
@@ -2605,12 +2681,15 @@ jQuery(".iaccordion-header").on("click",function(){
 			$value_stored ='';
 			$real_value   ='';
 			$placeholder  ='';
-			$readonly           ='';
+			$readonly     ='';
+
+			//if( $value['type'] == 'checkbox' ) { var_dump ( $stored[ $value['name'] ] ); }
+
 
 			$class        = isset( $value['class'] )?$value['class']:'';
 			$style        = isset( $value['style'] )?"style='{$value['style']}'":'';
 			$default      = isset( $value['value'] )?$value['value']:'';
-			$value_stored = isset($stored[ $value['name'] ])?$stored[ $value['name'] ]:null;
+			$value_stored = isset( $stored[ $value['name'] ])  && $stored[ $value['name'] ]?$stored[ $value['name'] ]:null;
 			$placeholder  = isset( $value['placeholder'] ) && $value['placeholder']?$value['placeholder']:'';
 			$readonly     = isset( $value['readonly'] ) && $value['readonly']? "readonly='readonly'" :'';
 
@@ -2892,6 +2971,7 @@ if( $value_stored ){
 		if(  is_array( $mb_header)  ){
 
 			$stored_meta = get_post_meta( $post_id , $name_store );
+
 			if ( !$stored_meta ){
 
 				$stored_meta = $this->set_default_metabox_values( $post_id , $name_store , $mb_header ,  $mb_body );
@@ -2906,7 +2986,6 @@ if( $value_stored ){
 
 
 			foreach ($mb_header as $key => $value) {
-
 				$html_data = $this->create_ilenMetabox( $key , $mb_header , $mb_body,  $stored_meta );
 				$function_meta_dinamyc = create_function( '',  "echo ".@var_export($html_data,TRUE).";" );
 				add_action('admin_head',  @create_function( '', "add_meta_box( '{$value['id']}', '{$value['title']}', '$function_meta_dinamyc', '$post_type' , '{$value['context']}', '{$value['priority']}' );" ), $priority );
@@ -2927,10 +3006,9 @@ if( $value_stored ){
 
 
 	// =VALIDATE WIDGET input for type
-	function ilenwidget_validate_inputs_ext($input,$type){
+	function ilenwidget_validate_inputs_ext($input,$type,$force = false){ // force: If NO type related send it anyway, this is done to fields that do not belong to the validation
 
 	  // type = (s)=string validate,(i)=integet,(h)=HTML output,(p)=pure string
-
 		if($type){
 			if( $type == 's' ){
 				return (string) esc_attr($input);
@@ -2945,6 +3023,9 @@ if( $value_stored ){
 			}elseif( $type == 'a' ){ // use strip_tags
 				return (array)$input;
 			}
+		}
+		if( $force == TRUE ){
+			return $input;
 		}
 
 	}
@@ -3393,27 +3474,41 @@ function fields_update($data,$is_tab = 1){
 									}
 
 									// set values type check list
-									$options_update[$value['name']] = $array_set_values_check;
+									$update_meta_new[$value['name']] = $array_set_values_check;
 
 
 
-								} // end type checkbox
-								elseif( isset( $_POST[ $value['name'] ] ) ){
+								} elseif($value['type'] == 'checkbox') {
+									//var_dump( isset($_POST[ $value['name'] ] ) );
+									if( isset($_POST[ $value['name'] ]) && $_POST[ $value['name'] ] ){
+										$update_meta_new[ $value['name'] ] = $this->ilenwidget_validate_inputs_ext( $_POST[ $value['name'] ], $value['sanitizes'] );
+									}else{
+										$update_meta_new[ $value['name'] ] = null;
+									}
+
+								// end type checkbox
+								}elseif( isset( $_POST[ $value['name'] ] ) ){
 
 									$update_meta_new[ $value['name'] ] = $this->ilenwidget_validate_inputs_ext( $_POST[ $value['name'] ], $value['sanitizes'] );
 
 								}
 							}
+
 						}
 					}
 				}
 			}
+			//var_dump(  $_POST );
 		}
 
 		// Checks for input and sanitizes/saves if needed
 		if( is_array($update_meta_new) ) {
 			update_post_meta( $post_id,  $this->parameter['metabox_name'] , $update_meta_new );
 		}
+
+
+		//var_dump( $update_meta_new );
+		//exit;
 
 
 	}
@@ -3756,5 +3851,5 @@ if( isset($IF_CONFIG->components) && ! is_array($IF_CONFIG->components) ){
 
 global $IF;
 $IF = null;
-$IF = new ilen_framework_2_6_4;
+$IF = new ilen_framework_2_6_6;
 ?>
